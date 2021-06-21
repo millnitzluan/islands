@@ -28,7 +28,7 @@ defmodule IslandsEngine.Island do
   def overlaps?(existing_island, new_island), do:
     not MapSet.disjoint?(existing_island.coordinates, new_island.coordinates)
 
-  def type(), do: [:atoll, :dot, :l_shape, :s_shape, :square]
+  def types(), do: [:atoll, :dot, :l_shape, :s_shape, :square]
 
   defp add_coordinates(offsets, upper_left) do
     Enum.reduce_while(offsets, MapSet.new(), fn offset, acc ->
@@ -51,5 +51,5 @@ defmodule IslandsEngine.Island do
   defp offsets(:dot), do: [{0, 0}]
   defp offsets(:l_shape), do: [{0, 0}, {1, 0}, {2, 0}, {2, 1}]
   defp offsets(:s_shape), do: [{0, 1}, {0, 2}, {1, 0}, {1, 1}]
-  defp offsets(_), do: {:error, :invalid_island_tyep}
+  defp offsets(_), do: {:error, :invalid_island_type}
 end
