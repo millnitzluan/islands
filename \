@@ -4,7 +4,7 @@ defmodule IslandsEngine.Game do
   alias IslandsEngine.{Board, Coordinate, Guesses, Island, Rules}
 
   @players [:player1, :player2]
-  @timeout 60 * 60 * 24 * 1000
+  @timeout 15000
 
   def init(name) do
     player1 = %{name: name, board: Board.new(), guesses: Guesses.new()}
